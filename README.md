@@ -164,7 +164,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## More Details
 
-<a href="https://github.com/theriturajps">![Github](https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white)</a> <a href="https://telegram.me/riturajps">![Telegram](https://img.shields.io/badge/Telegram-26A5E4.svg?style=for-the-badge&logo=Telegram&logoColor=white)</a> <a href="https://instagram.com/riturajps">![Instagram](https://img.shields.io/badge/Instagram-E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)</a>
+<a href="https://github.com/prince-m2hgamerz">![Github](https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white)</a> <a href="https://telegram.me/m2hgamerz">![Telegram](https://img.shields.io/badge/Telegram-26A5E4.svg?style=for-the-badge&logo=Telegram&logoColor=white)</a> <a href="https://instagram.com/m2hgamerz">![Instagram](https://img.shields.io/badge/Instagram-E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)</a>
 
 
 - **Developer :-** @prince-m2hgamerz
