@@ -1,64 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <script defer src="./js/script.js"></script>
-    <title>M2H Quotes API - A free and Open Source Quotes API</title>
-    <meta name="description" content="Get random free inspirational and motivational quotes from our Open Source Quotes API. Perfect for daily inspiration.">
-    <meta name="keywords" content="Quotes API, Free Quotes, Inspirational Quotes, Motivational Quotes, Open Source">
-    <meta name="author" content="Ritu Raj Pratap Singh">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Free Quotes API",
-            "url": "https://m2h-quotes-api.vercel.app/",
-            "description": "Get random free inspirational and motivational quotes."
-        }
-    </script>
-    <style>.quote-container {text-align: center;margin-top: 1em;} .sub-container {display: flex;justify-content: center;align-items: center;margin-bottom: 0.4em;} #quoteLink {word-break: break-all;}</style>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M2H Quotes API - Free & Open Source Quotes API</title>
+  <meta name="description" content="Get random free inspirational and motivational quotes from our Open Source Quotes API. Perfect for daily inspiration.">
+  <meta name="keywords" content="Quotes API, Free Quotes, Inspirational Quotes, Motivational Quotes, Open Source">
+  <meta name="author" content="Prince Kumar">
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #28a745;
+      --glass: rgba(255,255,255,0.06);
+      --muted: #6c757d;
+    }
+    body{font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,#f7f9fb 0,#eef2f6 100%); color:#212529;}
+    /* keep Navbar similar to old UI but slightly refined */
+    .navbar {background: #fff; box-shadow: 0 2px 8px rgba(22,28,37,0.04);}
+    .navbar-brand label{font-weight:700; color:var(--accent); font-size:1.1rem;}
+    .hero {
+      margin-top: 70px;
+      background: linear-gradient(90deg, rgba(40,167,69,0.05), rgba(0,123,255,0.03));
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 8px 30px rgba(36, 60, 90, 0.05);
+    }
+    .typewriter {
+      display:inline-block;
+      color: #0b5e3a;
+      font-weight:700;
+      font-size:1.6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid rgba(0,0,0,0.15);
+      animation: typing 3.2s steps(40, end), blink .8s step-end infinite;
+    }
+    @keyframes typing{from{width:0} to{width:100%}}
+    @keyframes blink{50%{border-color:transparent}}
+    .api-box {background:#ffffff;border:1px dashed #e9ecef;padding:10px 12px;border-radius:8px;display:flex;align-items:center;gap:12px;word-break:break-all;}
+    .btn-accent{background:var(--accent);border:0;color:#fff}
+    .quote-card {background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 20px rgba(10,20,30,0.05);}
+    .playground {background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 20px rgba(10,20,30,0.05);}
+    .feature-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 8px 30px rgba(10,20,30,0.04);transition:transform .25s}
+    .feature-card:hover{transform:translateY(-6px)}
+    .stat-box{background:linear-gradient(90deg,rgba(40,167,69,0.08),rgba(72, 49, 212,0.04));border-radius:12px;padding:18px;text-align:center}
+    .testimonial {background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 20px rgba(10,20,30,0.04)}
+    .dash-preview {background:linear-gradient(180deg,#fff,#f7f9fb);border-radius:10px;padding:12px;border:1px solid #eef2f6;box-shadow:0 6px 20px rgba(10,20,30,0.03)}
+    pre.api-res {background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto}
+    footer{margin-top:40px;padding:20px 0;background:#fff;border-top:1px solid #eee}
+    /* responsiveness tweaks */
+    @media (max-width:767px){
+      .typewriter{font-size:1.2rem}
+      .hero{padding:22px}
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><label><b>M2H Quotes API</b></label></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="/"><b>Home</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/docs"><b>Docs</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/api/quotes"><b>Quotes</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/api/random"><b>Random</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/prince-m2hgamerz/m2h-quotes-api"><b>GitHub</b></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container text-center">
-        <h1 id="typing-heading"></h1>
-        <p>Get Random Free inspirational and motivational quotes. It's a free and Open Source API.</p>
-        <div class="sub-container">
-            <label id="quoteLink" style="margin: 9px; font-size: 0.9em;" class="text-break">https://m2h-quotes-api.vercel.app/api/random</label>
-            <button class="btn btn-success ml-3" onclick="copyToClipboard()"><i class="fas fa-copy"></i></button>
-        </div>
-        <div class="quote-container">
-            <h3 style="display: none;" id="quote"></h3>
-            <h6 style="display: none;" id="quoteAuthor"></h6>
-            <button class="btn btn-success mt-2" onclick="get_random_quote()">GET</button>
-        </div>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><label>M2H Quotes API</label></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto align-items-center">
+          <li class="nav-item active"><a class="nav-link" href="/"><b>Home</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/docs"><b>Docs</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/api/quotes"><b>Quotes</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/api/random"><b>Random</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://github.com/prince-m2hgamerz/m2h-quotes-api"><b>GitHub</b></a></li>
+        </ul>
+      </div>
     </div>
-    <script src="./js/jquery.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </nav>
+
+  <!-- HERO -->
+  <div class="container hero mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <div style="margin-bottom:6px;color:#495057;font-weight:600">Open Source • Free • JSON</div>
+        <h1 style="font-size:2rem;margin-bottom:0.4rem">
+          <span class="typewriter" id="typewriter"></span>
+        </h1>
+        <p class="text-muted" style="max-width:640px;">
+          Get random inspirational and motivational quotes instantly. Use the API in web apps, bots, widgets, or daily pipelines — no auth required.
+        </p>
+
+        <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
+          <div class="api-box">
+            <i class="fas fa-link text-muted"></i>
+            <input id="apiLink" type="text" value="https://m2h-quotes-api.vercel.app/api/random" readonly style="border:0;background:transparent;outline:none;width:300px">
+            <button class="btn btn-sm btn-accent" onclick="copyApi()"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+
+          <div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="openDocs()"><i class="fas fa-book"></i> Docs</button>
+            <button class="btn btn-accent btn-sm" onclick="getQuote(true)"><i class="fas fa-play"></i> Live Demo</button>
+          </div>
+        </div>
+
+        <!-- small stats -->
+        <div class="d-flex flex-wrap mt-4" style="gap:12px">
+          <div class="stat-box" style="min-width:120px">
+            <div style="font-size:1.2rem;font-weight:700" data-target="120">0</div>
+            <small class="text-muted d-block">Total Quotes</small>
+          </div>
+          <div class="stat-box" style="min-width:120px">
+            <div style="font-size:1.2rem;font-weight:700" data-target="10000">0</div>
+            <small class="text-muted d-block">Requests Served</small>
+          </div>
+          <div class="stat-box" style="min-width:120px">
+            <div style="font-size:1.2rem;font-weight:700" data-target="100">0</div>
+            <small class="text-muted d-block">Uptime %</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <!-- Live Quote Card -->
+        <div class="quote-card">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <small class="text-muted">Live Quote</small>
+              <h5 id="liveQuote" style="margin-top:6px;min-height:52px">Click <b>Live Demo</b> or press "GET" to load a quote.</h5>
+              <div id="liveAuthor" class="text-muted" style="font-size:0.95rem"></div>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-outline-secondary" title="Refresh" onclick="getQuote(false)"><i class="fas fa-sync-alt"></i></button>
+            </div>
+          </div>
+          <hr style="margin:12px 0">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="small text-muted">Endpoint</div>
+            <div class="text-muted small">GET <code>/api/random</code></div>
+          </div>
+          <div class="mt-2 text-right">
+            <button class="btn btn-sm btn-accent" onclick="copyApi()"><i class="fas fa-copy"></i> Copy Endpoint</button>
+          </div>
+        </div> <!-- quote-card -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- LEFT COLUMN: Playground, Features -->
+      <div class="col-lg-8">
+        <!-- API Playground -->
+        <div class="playground mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">API Playground</h5>
+            <small class="text-muted">Try endpoints live</small>
+          </div>
+          <div class="mt-3 d-flex flex-wrap gap-2">
+            <input id="endpointInput" class="form-control" style="max-width:420px" value="/api/random">
+            <button class="btn btn-accent" onclick="runPlayground()">Send</button>
+            <button class="btn btn-outline-secondary" onclick="formatResponse()"><i class="fas fa-code"></i> Format</button>
+          </div>
+          <pre id="playResponse" class="api-res mt-3">{ "message": "Response will appear here" }</pre>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="row mb-4">
+          <div class="col-md-6 mb-3">
+            <div class="feature-card h-100">
+              <div class="d-flex align-items-center">
+                <div class="mr-3">
+                  <i class="fas fa-bolt fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h6>Fast Responses</h6>
+                  <p class="text-muted mb-0">Edge-hosted for low-latency JSON responses.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="feature-card h-100">
+              <div class="d-flex align-items-center">
+                <div class="mr-3">
+                  <i class="fas fa-code fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h6>Developer Friendly</h6>
+                  <p class="text-muted mb-0">Simple endpoints, clear examples, zero auth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="feature-card h-100">
+              <div class="d-flex align-items-center">
+                <div class="mr-3">
+                  <i class="fas fa-infinity fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h6>Open Source</h6>
+                  <p class="text-muted mb-0">Contribute on GitHub and suggest new quotes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="feature-card h-100">
+              <div class="d-flex align-items-center">
+                <div class="mr-3">
+                  <i class="fas fa-lock fa-2x text-success"></i>
+                </div>
+                <div>
+                  <h6>Privacy-first</h6>
+                  <p class="text-muted mb-0">No tracking and minimal logs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- features row -->
+
+        <!-- Testimonials Carousel -->
+        <div class="testimonial mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">What people say</h5>
+            <small class="text-muted">Trusted by devs</small>
+          </div>
+          <div id="testimonialArea" class="mt-3">
+            <!-- testimonial items filled by JS -->
+          </div>
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="btn btn-outline-secondary btn-sm mr-2" onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
+            <button class="btn btn-outline-secondary btn-sm" onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+      </div> <!-- end left column -->
+
+      <!-- RIGHT COLUMN: Mini Dashboard & Stats -->
+      <div class="col-lg-4">
+        <div class="dash-preview mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0">Mini Dashboard (Preview)</h6>
+            <small class="text-muted">Demo</small>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <small class="text-muted">Requests (24h)</small>
+              <strong>1,234</strong>
+            </div>
+            <div class="progress mt-2" style="height:8px;">
+              <div class="progress-bar" role="progressbar" style="width:56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <small class="text-muted">Top Endpoint</small>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <div><code>/api/random</code></div>
+              <div class="text-muted">78%</div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="openDocs()">Open Docs</button>
+            <button class="btn btn-accent btn-sm" onclick="copyApi()">Copy Endpoint</button>
+          </div>
+        </div>
+
+        <!-- Stats quick -->
+        <div class="mb-3">
+          <div class="card p-3 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <div><small class="text-muted">Total Quotes</small><div style="font-weight:700" data-target="120" class="stat-num">0</div></div>
+              <div><small class="text-muted">Contributors</small><div style="font-weight:700">3+</div></div>
+            </div>
+          </div>
+          <div class="card p-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div><small class="text-muted">Requests Served</small><div style="font-weight:700" data-target="10000" class="stat-num">0</div></div>
+              <div><small class="text-muted">Uptime</small><div style="font-weight:700" data-target="100" class="stat-num">0</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- end right column -->
+    </div> <!-- row -->
+  </div> <!-- container -->
+
+  <!-- CTA -->
+  <div class="container mt-4">
+    <div class="card p-4 text-center" style="border-radius:12px;background:linear-gradient(90deg,#ffffff,#f8f9fb);box-shadow:0 10px 30px rgba(10,20,30,0.03)">
+      <h4>Ready to add quotes to your app?</h4>
+      <p class="text-muted">Start using the endpoint in 1 line of code — perfect for dashboards, widgets, and bots.</p>
+      <div class="d-flex justify-content-center gap-2">
+        <a href="/docs" class="btn btn-outline-secondary">Read Docs</a>
+        <button class="btn btn-accent" onclick="copyApi()">Try Endpoint</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-4">
+    <div class="container text-center">
+      <p class="mb-1">© 2025 <a href="/">M2H Quotes API</a>. All rights reserved.</p>
+      <p class="mb-0">Built with <i class="fas fa-heart text-danger"></i> by <a href="https://m2hgamerz.site" target="_blank">Prince Kumar</a></p>
+    </div>
+  </footer>
+
+  <!-- JS (Bootstrap dependencies) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    /* ----------------------
+       Typewriter - simple
+       ---------------------- */
+    (function typewriter() {
+      const phrases = ["Free & Open Source Quotes API", "Instant JSON quotes • No auth", "Perfect for apps, bots, widgets"];
+      const el = document.getElementById('typewriter');
+      let pi = 0, idx = 0;
+      function write() {
+        const txt = phrases[pi];
+        el.textContent = txt.slice(0, idx++);
+        if (idx > txt.length) {
+          setTimeout(() => { idx = 0; pi = (pi+1) % phrases.length; write(); }, 1400);
+        } else {
+          setTimeout(write, 40);
+        }
+      }
+      write();
+    })();
+
+    /* ----------------------
+       Copy API
+       ---------------------- */
+    function copyApi(){
+      const api = document.getElementById('apiLink').value;
+      navigator.clipboard.writeText(api).then(()=> {
+        alert('API endpoint copied: ' + api);
+      }).catch(()=> alert('Copy failed'));
+    }
+    function openDocs(){ location.href = '/docs'; }
+
+    /* ----------------------
+       Live Quote fetch
+       - on demand and live demo
+       ---------------------- */
+    async function getQuote(openDocsOnLoad = false){
+      const liveEl = document.getElementById('liveQuote');
+      const authorEl = document.getElementById('liveAuthor');
+      try {
+        liveEl.textContent = 'Fetching quote...';
+        authorEl.textContent = '';
+        const res = await fetch('https://m2h-quotes-api.vercel.app/api/random');
+        if(!res.ok) throw new Error('Network error');
+        const data = await res.json();
+        liveEl.textContent = '"' + (data.quote || data.q || 'No quote returned') + '"';
+        authorEl.textContent = data.author ? '— ' + data.author : '';
+        if(openDocsOnLoad) document.getElementById('playResponse').textContent = JSON.stringify(data, null, 2);
+      } catch(e){
+        liveEl.textContent = 'Failed to fetch quote :(';
+        authorEl.textContent = '';
+      }
+    }
+
+    /* ----------------------
+       API Playground
+       ---------------------- */
+    async function runPlayground(){
+      const endpoint = document.getElementById('endpointInput').value.trim() || '/api/random';
+      const output = document.getElementById('playResponse');
+      output.textContent = '{ "loading": true }';
+      try {
+        const res = await fetch('https://m2h-quotes-api.vercel.app' + endpoint);
+        const data = await res.json();
+        output.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        output.textContent = '{ "error": "Request failed" }';
+      }
+    }
+    function formatResponse(){
+      const out = document.getElementById('playResponse');
+      try {
+        const j = JSON.parse(out.textContent);
+        out.textContent = JSON.stringify(j, null, 2);
+      } catch(e){ alert('No valid JSON to format'); }
+    }
+
+    /* ----------------------
+       Animated counters
+       ---------------------- */
+    (function animateCounters(){
+      const nodes = document.querySelectorAll('[data-target]');
+      nodes.forEach(node => {
+        const target = +node.getAttribute('data-target');
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 80));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            node.textContent = target + (target >= 1000 ? '+' : '');
+            clearInterval(timer);
+          } else {
+            node.textContent = current;
+          }
+        }, 18);
+      });
+      // additional ones with class stat-num
+      const extra = document.querySelectorAll('.stat-num');
+      extra.forEach(n => {
+        const t = +n.getAttribute('data-target') || +n.textContent || 0;
+        let c = 0; const s = Math.max(1, Math.floor((t||1000)/60));
+        const timer = setInterval(()=> {
+          c += s;
+          if(c >= t){ n.textContent = (t >= 1000 ? (t + '+') : t); clearInterval(timer); }
+          else n.textContent = c;
+        },20);
+      });
+    })();
+
+    /* ----------------------
+       Testimonials Carousel (simple)
+       ---------------------- */
+    (function testimonials(){
+      const items = [
+        {name:'Akash', role:'Developer', text:'Super easy to integrate — used in my app in minutes.'},
+        {name:'Neha', role:'Product Manager', text:'Great free resource for daily quotes on our dashboard.'},
+        {name:'Rohit', role:'Student', text:'Perfect for practice projects and learning API integration.'}
+      ];
+      let idx = 0;
+      const area = document.getElementById('testimonialArea');
+
+      function render(i){
+        const t = items[i];
+        area.innerHTML = `
+          <div class="p-3">
+            <div class="d-flex align-items-center">
+              <div style="width:56px;height:56px;border-radius:50%;background:#f1f3f5;display:flex;align-items:center;justify-content:center;margin-right:12px">
+                <strong style="color:#495057">${t.name.charAt(0)}</strong>
+              </div>
+              <div>
+                <strong>${t.name}</strong>
+                <div class="text-muted small">${t.role}</div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0" style="line-height:1.5">${t.text}</p>
+          </div>
+        `;
+      }
+      window.nextTestimonial = function(){
+        idx = (idx + 1) % items.length; render(idx);
+      };
+      window.prevTestimonial = function(){
+        idx = (idx - 1 + items.length) % items.length; render(idx);
+      };
+      // auto rotate
+      render(0);
+      setInterval(()=> nextTestimonial(), 6000);
+    })();
+
+    // Optionally pre-fetch a quote on page load
+    document.addEventListener('DOMContentLoaded', ()=> {
+      // animate the main stat counters (already running)
+      // fetch one live quote to show users
+      getQuote(false);
+    });
+  </script>
 </body>
 </html>

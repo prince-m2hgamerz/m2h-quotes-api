@@ -1,196 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/docs.css">
-    <script defer src="./js/script.js"></script>
-    <title>Free Quotes API - Docs</title>
-    <meta name="description" content="Get random free inspirational and motivational quotes from our Open Source Quotes API. Perfect for daily inspiration.">
-    <meta name="keywords" content="Quotes API, Free Quotes, Inspirational Quotes, Motivational Quotes, Open Source">
-    <meta name="author" content="Ritu Raj Pratap Singh">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Free Quotes API",
-            "url": "https://m2h-quotes-api.vercel.app/",
-            "description": "Get random free inspirational and motivational quotes."
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M2H Quotes API — Docs</title>
+  <meta name="description" content="Documentation for M2H Quotes API — Learn how to get random inspirational and motivational quotes using our free, open-source API." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: "#16a34a",
+            dark: "#0f172a",
+            light: "#f9fafb"
+          },
+          fontFamily: {
+            sans: ["Poppins", "sans-serif"]
+          }
         }
-    </script>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <label>M2H Quotes API</label>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><b>Home</b></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/docs"><b>Docs</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/api/quotes"><b>Quotes</b></a>
-                    </li>                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/api/random"><b>Random</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/prince-m2hgamerz/m2h-quotes-api"><b>GitHub</b></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container my-5">
-        <h2>API Documentation</h2>
-        <hr>
-        <h3><b>Getting Started</b></h3>
-        <p>This Free Quotes API is designed to help you easily integrate inspirational, motivational free quotes into your applications.</p>
-         <hr>
-        <h3><b>API Endpoints</b></h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Endpoint</th>
-                    <th>Method</th>
-                    <th>URL</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>All Quotes</td>
-                    <td>GET</td>
-                    <td><a href="/api/quotes">/api/quotes</a></td>
-                </tr>
-                <tr>
-                    <td>Random Quote</td>
-                    <td>GET</td>
-                    <td><a href="/api/random">/api/random</a></td>
-                </tr>
-                <tr>
-                    <td>Quote by ID</td>
-                    <td>GET</td>
-                    <td><a href="/api/quotes/1">/api/quotes/1</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <h3><b>Example Responses</b></h3>
-
-        <div class="code-block">
-            <label><b>Random Quote - /api/random</b></label>
-            <pre><code>{
-    "id" : 1, 
-    "quote": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
-    "author": "Albert Schweitzer"
-}</code></pre>
-        </div>
-
-        <div class="code-block">
-            <label><b>All Quotes - /api/quotes</b></label>
-            <pre><code>[
-    {
-        "id": 1,
-        "quote": "The best way to get started is to quit talking and begin doing.",
-        "author": "Walt Disney"
-    },
-    {
-        "id": 2,
-        "quote": "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
-        "author": "Winston Churchill"
-    },
-    {
-        "id": 3,
-        "quote": "Don’t let yesterday take up too much of today.",
-        "author": "Will Rogers"
+      }
     }
-]</code></pre>
-        </div>
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 20%, #0f172a 0%, #020617 100%);
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .glass:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    pre {
+      background: rgba(0, 0, 0, 0.4);
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: 'Fira Code', monospace; }
+    section { animation: fadeIn 0.8s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
 
-        <div class="code-block">
-            <label><b>Quote by ID - /api/quotes/1</b></label>
-            <pre><code>{
+<body class="text-gray-100 antialiased">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full glass z-50 px-6 py-4 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold tracking-wide text-accent">M2H Quotes API</a>
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="/" class="hover:text-accent transition">Home</a>
+      <a href="/docs" class="text-accent font-semibold">Docs</a>
+      <a href="/api/quotes" class="hover:text-accent">Quotes</a>
+      <a href="/api/random" class="hover:text-accent">Random</a>
+      <a href="https://github.com/prince-m2hgamerz/m2h-quotes-api" target="_blank" class="hover:text-accent">GitHub</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden text-xl"><i class="fas fa-bars"></i></button>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div id="mobileNav" class="hidden flex flex-col items-center glass mt-20 mx-auto p-4 w-11/12 rounded-xl space-y-3 md:hidden">
+    <a href="/" class="hover:text-accent">Home</a>
+    <a href="/docs" class="text-accent font-semibold">Docs</a>
+    <a href="/api/quotes" class="hover:text-accent">Quotes</a>
+    <a href="/api/random" class="hover:text-accent">Random</a>
+    <a href="https://github.com/prince-m2hgamerz/m2h-quotes-api" target="_blank" class="hover:text-accent">GitHub</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="pt-36 text-center px-6">
+    <h1 class="text-5xl font-extrabold text-white mb-4 drop-shadow-lg">M2H Quotes API Docs</h1>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+      Integrate motivational and inspirational quotes seamlessly into your apps, bots, or websites.  
+      Simple. Fast. Free.
+    </p>
+  </section>
+
+  <!-- Docs Content -->
+  <main class="pb-20 px-6 max-w-5xl mx-auto space-y-10">
+    <section class="glass p-6">
+      <h2 class="text-2xl font-semibold mb-3 text-accent">Getting Started</h2>
+      <p class="text-gray-300 mb-2">The M2H Quotes API provides JSON responses for free — no authentication or API key required. Perfect for projects, bots, or dashboards.</p>
+    </section>
+
+    <section class="glass p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-accent">API Endpoints</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-gray-700">
+              <th class="p-3 text-gray-400 font-medium">Endpoint</th>
+              <th class="p-3 text-gray-400 font-medium">Method</th>
+              <th class="p-3 text-gray-400 font-medium">URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-800 hover:bg-white/5 transition">
+              <td class="p-3">All Quotes</td>
+              <td class="p-3 text-green-400 font-semibold">GET</td>
+              <td class="p-3 text-accent"><a href="/api/quotes">/api/quotes</a></td>
+            </tr>
+            <tr class="border-b border-gray-800 hover:bg-white/5 transition">
+              <td class="p-3">Random Quote</td>
+              <td class="p-3 text-green-400 font-semibold">GET</td>
+              <td class="p-3 text-accent"><a href="/api/random">/api/random</a></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-3">Quote by ID</td>
+              <td class="p-3 text-green-400 font-semibold">GET</td>
+              <td class="p-3 text-accent"><a href="/api/quotes/1">/api/quotes/1</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="glass p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-accent">Example Responses</h2>
+      <h3 class="text-lg font-semibold mb-2 text-gray-300">Random Quote</h3>
+      <pre><code>{
+  "id": 1,
+  "quote": "Success is not the key to happiness. Happiness is the key to success.",
+  "author": "Albert Schweitzer"
+}</code></pre>
+
+      <h3 class="text-lg font-semibold mt-6 mb-2 text-gray-300">All Quotes</h3>
+      <pre><code>[
+  {
     "id": 1,
     "quote": "The best way to get started is to quit talking and begin doing.",
     "author": "Walt Disney"
-}</code></pre>
-        </div>
+  },
+  {
+    "id": 2,
+    "quote": "The pessimist sees difficulty in every opportunity.",
+    "author": "Winston Churchill"
+  }
+]</code></pre>
+    </section>
 
-        <hr>
-        <h3><b>Rate Limiting</b></h3>
-        <ul>
-            <li>Window Duration: 15 minutes</li>
-            <li>Maximum Requests: 200 requests per IP within the window duration</li>
-        </ul>
-        <p>Response on Limit Exceed:</p>
-        <div class="code-block">
-            <pre><code>{
+    <section class="glass p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-accent">Rate Limiting</h2>
+      <ul class="list-disc ml-6 text-gray-300 space-y-1">
+        <li>Window Duration: 15 minutes</li>
+        <li>Max Requests: 200 per IP</li>
+      </ul>
+      <p class="mt-3 text-gray-300">Response when limit exceeded:</p>
+      <pre><code>{
   "message": "Too many requests from this IP, please try again after 15 minutes"
 }</code></pre>
-        </div>
-        <hr>
-        <h3><b>Usage</b></h3>
-        <p>You can use the API to display quotes on your website or application to motivate your users. Here are some
-            examples of how you can use the API with JavaScript:</p>
+    </section>
 
-        <div class="code-block">
-            <label><b>Get Random Quote</b></label>
-            <pre><code>fetch('https://m2h-quotes-api.vercel.app/api/random')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.quote);
-        console.log("- " + data.author);
-    });</code></pre>
-        </div>
+    <section class="glass p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-accent">Usage Examples</h2>
+      <p class="text-gray-300 mb-4">Use JavaScript’s <code>fetch()</code> to get quotes instantly.</p>
 
-        <div class="code-block">
-            <label><b>Get All Quotes</b></label>
-            <pre><code>fetch('https://m2h-quotes-api.vercel.app/api/quotes')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(quote => {
-            console.log(quote.quote);
-            console.log("- " + quote.author);
-        });
-    });</code></pre>
-        </div>
+      <h3 class="text-lg font-semibold text-gray-300 mb-2">Get Random Quote</h3>
+      <pre><code>fetch('https://m2h-quotes-api.vercel.app/api/random')
+  .then(res => res.json())
+  .then(data => console.log(data.quote, "-", data.author));</code></pre>
 
-        <div class="code-block">
-        <label><b>Get Quote by ID</b></label>
-            <pre><code>const quoteId = 1; // Example ID
-fetch(`https://m2h-quotes-api.vercel.app/api/quotes/${quoteId}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.quote);
-        console.log("- " + data.author);
-    });</code></pre>
-        </div>
-    </main>
-    <footer class="footer bg-light text-center py-3">
-        <div class="container">
-            <p class="mb-3">© 2024 <a href="/" target="_blank">Free Quotes API</a>. All rights reserved.</p>
-            <p class="mb-0">Created with <i class="fas fa-heart"></i> by <a href="https://github.com/prince-m2hgamerz" target="_blank">Ritu Raj</a></p>
-        </div>
-    </footer>
-    
-    <script src="./js/jquery.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <h3 class="text-lg font-semibold text-gray-300 mt-6 mb-2">Get All Quotes</h3>
+      <pre><code>fetch('https://m2h-quotes-api.vercel.app/api/quotes')
+  .then(res => res.json())
+  .then(data => data.forEach(q => console.log(q.quote, "-", q.author)));</code></pre>
+
+      <h3 class="text-lg font-semibold text-gray-300 mt-6 mb-2">Get Quote by ID</h3>
+      <pre><code>const id = 1;
+fetch(`https://m2h-quotes-api.vercel.app/api/quotes/${id}`)
+  .then(res => res.json())
+  .then(data => console.log(data.quote, "-", data.author));</code></pre>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-20 text-center text-gray-500 text-sm pb-6">
+    © 2025 <span class="text-accent font-medium">M2H Quotes API</span> — Built with ❤️ by 
+    <a href="https://m2hgamerz.site" target="_blank" class="text-accent hover:underline">Prince Kumar</a>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    menuBtn.addEventListener("click", () => mobileNav.classList.toggle("hidden"));
+  </script>
 </body>
 </html>
