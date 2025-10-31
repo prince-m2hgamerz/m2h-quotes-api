@@ -6,7 +6,7 @@ Welcome to the Quotes API! Access a vast collection of motivational quotes desig
 
 <div align='center'>
   <br>
-  <img src="https://github.com/user-attachments/assets/b989a196-34e8-4b42-9e9a-9351608a2248" alt="M2H-Quotes-API-A-free-and-Open-Source-Quotes-API">
+  <img width="1326" height="828" alt="image" src="https://github.com/user-attachments/assets/7a7e0c96-fe71-4fcb-a1a2-7842da64c0e5" />
   <br>
 </div>
 
